@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Módulos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .module-selector {
+            margin-bottom: 20px;
+        }
+
+        .content-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .content-list li {
+            margin: 10px 0;
+        }
+
+        .content-list a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        .content-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Seleção de Módulos</h1>
+
+    <div class="module-selector">
+        <label for="moduleSelect">Escolha um Módulo:</label>
+        <select id="moduleSelect">
+            <option value="1">1° Módulo</option>
+            <option value="2">2° Módulo</option>
+            <option value="3">3° Módulo</option>
+        </select>
+    </div>
+
+    <div id="contentContainer">
+        <!-- O conteúdo será exibido aqui com base na escolha do módulo -->
+    </div>
+
+    <script>
+        const moduleSelect = document.getElementById("moduleSelect");
+        const contentContainer = document.getElementById("contentContainer");
+
+        const moduleContents = {
+            1: [
+                { name: "Conteúdo 1", url: "https://exemplo.com/conteudo1" },
+                { name: "Conteúdo 2", url: "https://exemplo.com/conteudo2" },
+                { name: "Conteúdo 3", url: "https://exemplo.com/conteudo3" },
+                { name: "Conteúdo 4", url: "https://exemplo.com/conteudo4" },
+                { name: "Conteúdo 5", url: "https://exemplo.com/conteudo5" },
+                { name: "Conteúdo 6", url: "https://exemplo.com/conteudo6" },
+                { name: "Conteúdo 7", url: "https://exemplo.com/conteudo7" }
+            ],
+            2: [
+                { name: "Conteúdo A", url: "https://exemplo.com/conteudoA" },
+                { name: "Conteúdo B", url: "https://exemplo.com/conteudoB" },
+                { name: "Conteúdo C", url: "https://exemplo.com/conteudoC" },
+                { name: "Conteúdo D", url: "https://exemplo.com/conteudoD" },
+                { name: "Conteúdo E", url: "https://exemplo.com/conteudoE" }
+            ],
+            3: [
+                { name: "Conteúdo Z", url: "https://exemplo.com/conteudoZ" },
+                { name: "Conteúdo X", url: "https://exemplo.com/conteudoX" },
+                { name: "Conteúdo V", url: "https://exemplo.com/conteudoV" },
+                { name: "Conteúdo N", url: "https://exemplo.com/conteudoN" },
+                { name: "Conteúdo M", url: "https://exemplo.com/conteudoM" }
+            ]
+        };
+
+        function updateContentList(module) {
+            const contents = moduleContents[module];
+            contentContainer.innerHTML = "";  // Limpa o conteúdo atual
+
+            if (contents) {
+                const ul = document.createElement("ul");
+                ul.classList.add("content-list");
+
+                contents.forEach(content => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = content.url;
+                    a.textContent = content.name;
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+
+                contentContainer.appendChild(ul);
+            }
+        }
+
+        // Atualiza a lista de conteúdo quando a seleção do módulo muda
+        moduleSelect.addEventListener("change", function() {
+            updateContentList(this.value);
+        });
+
+        // Inicializa com o conteúdo do primeiro módulo
+        updateContentList(1);
+    </script>
+
+</body>
+</html>

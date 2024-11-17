@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Módulo e Etapa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, select, option {
+            font-size: 1.1em;
+            margin: 10px 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seleção de Módulo e Etapa</h1>
+    <form action="#" method="post">
+        <!-- Módulo -->
+        <label for="modulo">Escolha o Módulo:</label>
+        <select id="modulo" name="modulo">
+            <option value="">Selecione...</option>
+            <option value="1">1° Módulo</option>
+            <option value="2">2° Módulo</option>
+            <option value="3">3° Módulo</option>
+            <option value="4">4° Módulo</option>
+        </select>
+
+        <!-- Etapa -->
+        <label for="etapa">Escolha a Etapa:</label>
+        <select id="etapa" name="etapa">
+            <option value="">Selecione o módulo primeiro</option>
+            <optgroup label="1° Módulo">
+                <option value="1_1">Etapa 1</option>
+                <option value="1_2">Etapa 2</option>
+                <option value="1_3">Etapa 3</option>
+            </optgroup>
+            <optgroup label="2° Módulo">
+                <option value="2_1">Etapa 1</option>
+                <option value="2_2">Etapa 2</option>
+                <option value="2_3">Etapa 3</option>
+            </optgroup>
+            <optgroup label="3° Módulo">
+                <option value="3_1">Etapa 1</option>
+                <option value="3_2">Etapa 2</option>
+                <option value="3_3">Etapa 3</option>
+            </optgroup>
+            <optgroup label="4° Módulo">
+                <option value="4_1">Etapa 1</option>
+                <option value="4_2">Etapa 2</option>
+                <option value="4_3">Etapa 3</option>
+            </optgroup>
+        </select>
+
+        <!-- Conteúdo -->
+        <label for="conteudo">Escolha o Conteúdo:</label>
+        <select id="conteudo" name="conteudo">
+            <option value="">Selecione a etapa primeiro</option>
+
+            <!-- Conteúdos para o 1° Módulo -->
+            <optgroup label="1° Módulo - Etapa 1">
+                <option value="1Md1Et1C1a.htm">Conteúdo 1a</option>
+                <option value="1Md1Et1C2a.htm">Conteúdo 2a</option>
+                <option value="1Md1Et1C3a.htm">Conteúdo 3a</option>
+                <option value="1Md1Et1C4a.htm">Conteúdo 4a</option>
+                <option value="1Md1Et1C5a.htm">Conteúdo 5a</option>
+            </optgroup>
+            <optgroup label="1° Módulo - Etapa 2">
+                <option value="1Md1Et2C1b.htm">Conteúdo 1b</option>
+                <option value="1Md1Et2C2b.htm">Conteúdo 2b</option>
+                <option value="1Md1Et2C3b.htm">Conteúdo 3b</option>
+                <option value="1Md1Et2C4b.htm">Conteúdo 4b</option>
+                <option value="1Md1Et2C5b.htm">Conteúdo 5b</option>
+            </optgroup>
+            <optgroup label="1° Módulo - Etapa 3">
+                <option value="1Md1Et3C1c.htm">Conteúdo 1c</option>
+                <option value="1Md1Et3C2b.htm">Conteúdo 2b</option>
+                <option value="1Md1Et3C3c.htm">Conteúdo 3c</option>
+                <option value="1Md1Et3C4c.htm">Conteúdo 4c</option>
+                <option value="1Md1Et3C5c.htm">Conteúdo 5c</option>
+            </optgroup>
+
+            <!-- Conteúdos para o 2° Módulo -->
+            <optgroup label="2° Módulo - Etapa 1">
+                <option value="2Md1Et1C1a.htm">Conteúdo 1a</option>
+                <option value="2Md1Et1C2a.htm">Conteúdo 2a</option>
+                <option value="2Md1Et1C3a.htm">Conteúdo 3a</option>
+                <option value="2Md1Et1C4a.htm">Conteúdo 4a</option>
+                <option value="2Md1Et1C5a.htm">Conteúdo 5a</option>
+            </optgroup>
+            <optgroup label="2° Módulo - Etapa 2">
+                <option value="2Md1Et2C1b.htm">Conteúdo 1b</option>
+                <option value="2Md1Et2C2b.htm">Conteúdo 2b</option>
+                <option value="2Md1Et2C3b.htm">Conteúdo 3b</option>
+                <option value="2Md1Et2C4b.htm">Conteúdo 4b</option>
+                <option value="2Md1Et2C5b.htm">Conteúdo 5b</option>
+            </optgroup>
+            <optgroup label="2° Módulo - Etapa 3">
+                <option value="2Md1Et3C1c.htm">Conteúdo 1c</option>
+                <option value="2Md1Et3C2b.htm">Conteúdo 2b</option>
+                <option value="2Md1Et3C3c.htm">Conteúdo 3c</option>
+                <option value="2Md1Et3C4c.htm">Conteúdo 4c</option>
+                <option value="2Md1Et3C5c.htm">Conteúdo 5c</option>
+            </optgroup>
+
+            <!-- Conteúdos para o 3° Módulo -->
+            <optgroup label="3° Módulo - Etapa 1">
+                <option value="3Md1Et1C1a.htm">Conteúdo 1a</option>
+                <option value="3Md1Et1C2a.htm">Conteúdo 2a</option>
+                <option value="3Md1Et1C3a.htm">Conteúdo 3a</option>
+                <option value="3Md1Et1C4a.htm">Conteúdo 4a</option>
+                <option value="3Md1Et1C5a.htm">Conteúdo 5a</option>
+            </optgroup>
+            <optgroup label="3° Módulo - Etapa 2">
+                <option value="3Md1Et2C1b.htm">Conteúdo 1b</option>
+                <option value="3Md1Et2C2b.htm">Conteúdo 2b</option>
+                <option value="3Md1Et2C3b.htm">Conteúdo 3b</option>
+                <option value="3Md1Et2C4c.htm">Conteúdo 4c</option>
+                <option value="3Md1Et2C5b.htm">Conteúdo 5b</option>
+            </optgroup>
+            <optgroup label="3° Módulo - Etapa 3">
+                <option value="3Md1Et3C1c.htm">Conteúdo 1c</option>
+                <option value="3Md1Et3C2b.htm">Conteúdo 2b</option>
+                <option value="3Md1Et3C3c.htm">Conteúdo 3c</option>
+                <option value="3Md1Et3C4c.htm">Conteúdo 4c</option>
+                <option value="3Md1Et3C5c.htm">Conteúdo 5c</option>
+            </optgroup>
+
+            <!-- Conteúdos para o 4° Módulo -->
+            <optgroup label="4° Módulo - Etapa 1">
+                <option value="4Md1Et1C1a.htm">Conteúdo 1a</option>
+                <option value="4Md1Et1C2a.htm">Conteúdo 2a</option>
+                <option value="4Md1Et1C3a.htm">Conteúdo 3a</option>
+                <option value="4Md1Et1C4a.htm">Conteúdo 4a</option>
+            </optgroup>
+            <optgroup label="4° Módulo - Etapa 2">
+                <option value="4Md1Et2C1b.htm">Conteúdo 1b</option>
+                <option value="4Md1Et2C2b.htm">Conteúdo 2b</option>
+                <option value="4Md1Et2C3b.htm">Conteúdo 3b</option>
+                <option value="4Md1Et2C4c.htm">Conteúdo 4c</option>
+            </optgroup>
+            <optgroup label="4° Módulo - Etapa 3">
+                <option value="4Md1Et3C1c.htm">Conteúdo 1c</option>
+                <option value="4Md1Et3C2b.htm">Conteúdo 2b</option>
+                <option value="4Md1Et3C3c.htm">Conteúdo 3c</option>
+                <option value="4Md1Et3C4c.htm">Conteúdo 4c</option>
+            </optgroup>
+        </select>
+        
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Conteúdo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, select, button {
+            display: block;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seleção de Conteúdo</h1>
+    <form id="contentForm">
+        <label for="moduleSelect">Escolha o Módulo:</label>
+        <select id="moduleSelect">
+            <option value="">--Selecione--</option>
+            <option value="1">1° Módulo</option>
+            <option value="2">2° Módulo</option>
+            <option value="3">3° Módulo</option>
+            <option value="4">4° Módulo</option>
+        </select>
+
+        <label for="stepSelect">Escolha a Etapa:</label>
+        <select id="stepSelect" disabled>
+            <option value="">--Selecione--</option>
+        </select>
+
+        <label for="contentSelect">Escolha o Conteúdo:</label>
+        <select id="contentSelect" disabled>
+            <option value="">--Selecione--</option>
+        </select>
+
+        <button id="goButton" type="button" disabled>Ir para o Conteúdo</button>
+    </form>
+
+    <script>
+        const stepsData = {
+            // 1 Modulo
+            "1": {
+                "1": [
+                    { name: "conteudo1a", url: "https//1Md1Et1C1a.htm" },
+                    { name: "conteudo2a", url: "https//1Md1Et1C2a.htm" },
+                    { name: "conteudo3a", url: "https//1Md1Et1C3a.htm" },
+                    { name: "conteudo4a", url: "https//1Md1Et1C4a.htm" },
+                    { name: "conteudo5a", url: "https//1Md1Et1C5a.htm" }
+                ],
+                "2": [
+                    { name: "conteudo1b", url: "https//1Md1Et2C1b.htm" },
+                    { name: "conteudo2b", url: "https//1Md1Et2C2b.htm" },
+                    { name: "conteudo3b", url: "https//1Md1Et2C3b.htm" },
+                    { name: "conteudo4b", url: "https//1Md1Et2C4c.htm" },
+                    { name: "conteudo5b", url: "https//1Md1Et2C5b.htm" }
+                ],
+                "3": [
+                    { name: "conteudo1c", url: "https//1Md1Et3C1c.htm" },
+                    { name: "conteudo2c", url: "https//1Md1Et3C2c.htm" },
+                    { name: "conteudo3c", url: "https//1Md1Et3C3c.htm" },
+                    { name: "conteudo4c", url: "https//1Md1Et3C4c.htm" },
+                    { name: "conteudo5c", url: "https//1Md1Et3C5c.htm" }
+                ],
+            },
+            // 2 Modulo
+            "2": {
+                "1": [
+                    { name: "conteudo1d", url: "http://2Md1Et1C1d.htm" },
+                    { name: "conteudo2d", url: "http://2Md1Et1C2d.htm" },
+                    { name: "conteudo3d", url: "http://2Md1Et1C3d.htm" },
+                    { name: "conteudo4d", url: "http://2Md1Et1C4d.htm" },
+                    { name: "conteudo5d", url: "http://2Md1Et1C5d.htm" }
+                ],
+                "2": [
+                    { name: "conteudo1e", url: "http://2Md1Et2C1e.htm" },
+                    { name: "conteudo2e", url: "http://2Md1Et2C2e.htm" },
+                    { name: "conteudo3e", url: "http://2Md1Et2C3e.htm" },
+                    { name: "conteudo4e", url: "http://2Md1Et2C4f.htm" },
+                    { name: "conteudo5e", url: "http://2Md1Et2C5e.htm" }
+                ],
+                "3": [
+                    { name: "conteudo1f", url: "http://2Md1Et3C1f.htm" },
+                    { name: "conteudo2f", url: "http://2Md1Et3C2f.htm" },
+                    { name: "conteudo3f", url: "http://2Md1Et3C3f.htm" },
+                    { name: "conteudo4f", url: "http://2Md1Et3C4f.htm" },
+                    { name: "conteudo5f", url: "http://2Md1Et3C5f.htm" }
+                ],
+            },
+            // 3 Modulo
+            "3": {
+                "1": [
+                    { name: "conteudo1g", url: "http://3Md1Et1C1g.htm" },
+                    { name: "conteudo2g", url: "http://3Md1Et1C2g.htm" },
+                    { name: "conteudo3g", url: "http://3Md1Et1C3g.htm" },
+                    { name: "conteudo4g", url: "http://3Md1Et1C4g.htm" },
+                    { name: "conteudo5g", url: "http://3Md1Et1C5g.htm" }
+                ],
+                "2": [
+                    { name: "conteudo1h", url: "http://3Md1Et2C1h.htm" },
+                    { name: "conteudo2h", url: "http://3Md1Et2C2h.htm" },
+                    { name: "conteudo3h", url: "http://3Md1Et2C3h.htm" },
+                    { name: "conteudo4h", url: "http://3Md1Et2C4i.htm" },
+                    { name: "conteudo5h", url: "http://3Md1Et2C5h.htm" }
+                ],
+                "3": [
+                    { name: "conteudo1i", url: "http://3Md1Et3C1i.htm" },
+                    { name: "conteudo2i", url: "http://3Md1Et3C2i.htm" },
+                    { name: "conteudo3i", url: "http://3Md1Et3C3i.htm" },
+                    { name: "conteudo4i", url: "http://3Md1Et3C4i.htm" },
+                    { name: "conteudo5i", url: "http://3Md1Et3C5i.htm" }
+                ],
+            }
+        };
+        
+
+        const moduleSelect = document.getElementById("moduleSelect");
+        const stepSelect = document.getElementById("stepSelect");
+        const contentSelect = document.getElementById("contentSelect");
+        const goButton = document.getElementById("goButton");
+
+        moduleSelect.addEventListener("change", () => {
+            const moduleValue = moduleSelect.value;
+            stepSelect.innerHTML = '<option value="">--Selecione--</option>';
+            contentSelect.innerHTML = '<option value="">--Selecione--</option>';
+            stepSelect.disabled = true;
+            contentSelect.disabled = true;
+            goButton.disabled = true;
+
+            if (stepsData[moduleValue]) {
+                for (const step in stepsData[moduleValue]) {
+                    const option = document.createElement("option");
+                    option.value = step;
+                    option.textContent = `Etapa ${step}`;
+                    stepSelect.appendChild(option);
+                }
+                stepSelect.disabled = false;
+            }
+        });
+
+        stepSelect.addEventListener("change", () => {
+            const moduleValue = moduleSelect.value;
+            const stepValue = stepSelect.value;
+            contentSelect.innerHTML = '<option value="">--Selecione--</option>';
+            contentSelect.disabled = true;
+            goButton.disabled = true;
+
+            if (stepsData[moduleValue] && stepsData[moduleValue][stepValue]) {
+                stepsData[moduleValue][stepValue].forEach(content => {
+                    const option = document.createElement("option");
+                    option.value = content.url;
+                    option.textContent = content.name;
+                    contentSelect.appendChild(option);
+                });
+                contentSelect.disabled = false;
+            }
+        });
+
+        contentSelect.addEventListener("change", () => {
+            goButton.disabled = contentSelect.value === "";
+        });
+
+        goButton.addEventListener("click", () => {
+            const url = contentSelect.value;
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    </script>
+</body>
+</html>

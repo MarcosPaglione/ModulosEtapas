@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Módulos e Etapas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .module {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        .module h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Formulário com Módulos e Etapas</h1>
+
+<form id="formModulo">
+    <!-- Módulo 1 -->
+    <div class="module">
+        <h3>Módulo 1: Introdução</h3>
+        <label for="etapaModulo1">Escolha a Etapa:</label>
+        <select id="etapaModulo1" name="etapaModulo1">
+            <option value="">Selecione uma etapa</option>
+            <option value="https://www.example.com/etapa1-m1">Etapa 1 - Visão Geral</option>
+            <option value="https://www.example.com/etapa2-m1">Etapa 2 - Detalhes</option>
+            <option value="https://www.example.com/etapa3-m1">Etapa 3 - Finalização</option>
+        </select>
+    </div>
+
+    <!-- Módulo 2 -->
+    <div class="module">
+        <h3>Módulo 2: Aprendizado</h3>
+        <label for="etapaModulo2">Escolha a Etapa:</label>
+        <select id="etapaModulo2" name="etapaModulo2">
+            <option value="">Selecione uma etapa</option>
+            <option value="https://www.example.com/etapa1-m2">Etapa 1 - Definição</option>
+            <option value="https://www.example.com/etapa2-m2">Etapa 2 - Exemplos</option>
+            <option value="https://www.example.com/etapa3-m2">Etapa 3 - Exercícios</option>
+        </select>
+    </div>
+
+    <!-- Módulo 3 -->
+    <div class="module">
+        <h3>Módulo 3: Revisão</h3>
+        <label for="etapaModulo3">Escolha a Etapa:</label>
+        <select id="etapaModulo3" name="etapaModulo3">
+            <option value="">Selecione uma etapa</option>
+            <option value="https://www.example.com/etapa1-m3">Etapa 1 - Revisão Inicial</option>
+            <option value="https://www.example.com/etapa2-m3">Etapa 2 - Revisão Intermediária</option>
+            <option value="https://www.example.com/etapa3-m3">Etapa 3 - Revisão Final</option>
+        </select>
+    </div>
+</form>
+
+<script>
+    // Função para redirecionar quando uma etapa for selecionada
+    function redirecionarParaUrl(selectElement) {
+        var url = selectElement.value;
+        if (url) {
+            window.location.href = url;  // Redireciona para a URL
+        }
+    }
+
+    // Adicionando event listeners para cada select
+    document.getElementById('etapaModulo1').addEventListener('change', function() {
+        redirecionarParaUrl(this);
+    });
+
+    document.getElementById('etapaModulo2').addEventListener('change', function() {
+        redirecionarParaUrl(this);
+    });
+
+    document.getElementById('etapaModulo3').addEventListener('change', function() {
+        redirecionarParaUrl(this);
+    });
+</script>
+
+</body>
+</html>

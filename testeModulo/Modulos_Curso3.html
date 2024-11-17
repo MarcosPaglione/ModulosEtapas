@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha de Conteúdo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0078D7;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            margin: 20px;
+        }
+        select, button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Escolha de Conteúdo</h1>
+    </header>
+    <div class="container">
+        <form id="contentForm">
+            <label for="moduleSelect">Escolha o Módulo:</label>
+            <select id="moduleSelect" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="1">1° Módulo</option>
+                <option value="2">2° Módulo</option>
+                <option value="3">3° Módulo</option>
+                <option value="4">4° Módulo</option>
+            </select>
+
+            <label for="stageSelect">Escolha a Etapa:</label>
+            <select id="stageSelect" disabled required>
+                <option value="" disabled selected>Selecione...</option>
+            </select>
+
+            <label for="contentSelect">Escolha o Conteúdo:</label>
+            <select id="contentSelect" disabled required>
+                <option value="" disabled selected>Selecione...</option>
+            </select>
+
+            <button type="submit" disabled>Ir para o Conteúdo</button>
+        </form>
+    </div>
+
+    <script>
+        const stagesConfig = {
+            1: 7, // 1° Módulo tem 7 etapas
+            2: 8, // 2° Módulo tem 8 etapas
+            3: 9, // 3° Módulo tem 9 etapas
+            4: 5  // 4° Módulo tem 5 etapas
+        };
+
+        const contentsConfig = {
+            1: 12, // Cada etapa do 1° Módulo tem 12 conteúdos
+            2: 13, // Cada etapa do 2° Módulo tem 13 conteúdos
+            3: 14, // Cada etapa do 3° Módulo tem 14 conteúdos
+            4: 10  // Cada etapa do 4° Módulo tem 10 conteúdos
+        };
+
+        const moduleSelect = document.getElementById('moduleSelect');
+        const stageSelect = document.getElementById('stageSelect');
+        const contentSelect = document.getElementById('contentSelect');
+        const submitButton = document.querySelector('button');
+
+        moduleSelect.addEventListener('change', () => {
+            const module = moduleSelect.value;
+            stageSelect.innerHTML = '<option value="" disabled selected>Selecione...</option>';
+            contentSelect.innerHTML = '<option value="" disabled selected>Selecione...</option>';
+            stageSelect.disabled = false;
+            contentSelect.disabled = true;
+            submitButton.disabled = true;
+
+            for (let i = 1; i <= stagesConfig[module]; i++) {
+                const option = document.createElement('option');
+                option.value = `etapa${i}`;
+                option.textContent = `Etapa ${i}`;
+                stageSelect.appendChild(option);
+            }
+        });
+
+        stageSelect.addEventListener('change', () => {
+            const module = moduleSelect.value;
+            contentSelect.innerHTML = '<option value="" disabled selected>Selecione...</option>';
+            contentSelect.disabled = false;
+            submitButton.disabled = true;
+
+            for (let i = 1; i <= contentsConfig[module]; i++) {
+                const option = document.createElement('option');
+                option.value = `conteudo${i}`;
+                option.textContent = `Conteúdo ${i}`;
+                contentSelect.appendChild(option);
+            }
+        });
+
+        contentSelect.addEventListener('change', () => {
+            submitButton.disabled = false;
+        });
+
+        document.getElementById('contentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const module = moduleSelect.value;
+            const stage = stageSelect.value.replace('etapa', 'Etapa');
+            const content = contentSelect.value.replace('conteudo', 'Conteúdo');
+            const url = `https://exemplo.com/modulo${module}/${stage}/${content}`;
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
+ 

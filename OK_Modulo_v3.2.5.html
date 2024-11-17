@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Módulo, Etapa e Conteúdo</title>
+    <style>
+        /* Resetando margens e paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos gerais */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            color: #4CAF50;
+        }
+
+        strong {
+            margin-bottom: 16px;
+            /*font-size: 1.2em;*/
+            color: #9d240c;
+        }
+
+         /* Formulário */
+        #moduleForm {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Containers de etapas e conteúdos */
+        #stepSelectContainer, #contentContainer {
+            display: none;
+        }
+
+        /* Estilo da lista de conteúdos */
+        .content-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .content-item {
+            margin: 11px 0;
+            font-size: 1.1em;
+        }
+
+        .content-item a {
+            text-decoration: none;
+            color: #007BFF;
+            transition: color 0.3s ease;
+        }
+
+        .content-item a:hover {
+            /*cor texto passar mouse*/
+            color: #0056b3;
+        }
+
+        /* Efeito de hover nos botões (se tiver) */
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Efeito de animação nos containers */
+        .fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos para o link de conteúdo */
+        .content-item a {
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #f0f8ff;
+            transition: background-color 0.3s ease;
+        }
+
+        .content-item a:hover {
+            background-color: #e1f5fe;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Seleção de Módulo, Etapa e Conteúdo</h1>
+
+    <form id="moduleForm">
+        <label for="moduleSelect">Escolha um Módulo:</label>
+        <select id="moduleSelect" onchange="updateStepOptions()">
+            <option value="">Selecione...</option>
+            <option value="module1">Módulo 1</option>
+            <option value="module2">Módulo 2</option>
+            <option value="module3">Módulo 3</option>
+        </select>
+
+        <div id="stepSelectContainer" class="fadeIn">
+            <label for="stepSelect">Escolha uma Etapa:</label>
+            <select id="stepSelect" onchange="updateContentOptions()">
+                <option value="">Selecione...</option>
+            </select>
+        </div>
+
+        <div id="contentContainer" class="fadeIn">
+            <h3>Conteúdos:</h3>
+            <div id="contentList" class="content-list"></div>
+        </div>
+    </form>
+
+    <script>
+        //Nome da Etapa, subtitulo da etapa, conteudos
+     const modules = {
+        module1: {
+            etapas: [
+	        { etapa: "Etapa 1", subtitulo: "Subtítulo Etapa 1", conteudos: ["Conteúdo 1.1", "Conteúdo 1.2", "Conteúdo 1.3", "Conteúdo 1.4"] },
+		    { etapa: "Etapa 2", subtitulo: "Subtítulo Etapa 2", conteudos: ["Conteúdo 2.1", "Conteúdo 2.2", "Conteúdo 2.3", "Conteúdo 2.4"] },
+		    { etapa: "Etapa 3", subtitulo: "Subtítulo Etapa 3", conteudos: ["Conteúdo 3.1", "Conteúdo 3.2", "Conteúdo 3.3", "Conteúdo 3.4"] }
+		 ]
+    },
+// Repita para module2 e module3
+
+            //xx
+            module2: {
+                etapas: [
+                    { etapa: "Etapa 4", subtitulo: "Subtítulo Etapa 4", conteudos: ["Conteúdo 4.1", "Conteúdo 4.2", "Conteúdo 4.3", "Conteúdo 4.4", "Conteúdo 4.5"] },
+                    { etapa: "Etapa 5", subtitulo: "Subtítulo Etapa 5", conteudos: ["Conteúdo 5.1", "Conteúdo 5.2", "Conteúdo 5.3", "Conteúdo 5.4", "Conteúdo 5.5"] },
+                    { etapa: "Etapa 6", subtitulo: "Subtítulo Etapa 6", conteudos: ["Conteúdo 6.1", "Conteúdo 6.2", "Conteúdo 6.3", "Conteúdo 6.4", "Conteúdo 6.5"] }
+                ]
+            },
+            module3: {
+                etapas: [
+                    { etapa: "Etapa 7", subtitulo: "Subtítulo Etapa 7", conteudos: ["Conteúdo 7.1", "Conteúdo 7.2", "Conteúdo 7.3"] },
+                    { etapa: "Etapa 8", subtitulo: "Subtítulo Etapa 8", conteudos: ["Conteúdo 8.1", "Conteúdo 8.2", "Conteúdo 8.3"] },
+                    { etapa: "Etapa 9", subtitulo: "Subtítulo Etapa 9", conteudos: ["Conteúdo 9.1", "Conteúdo 9.2", "Conteúdo 9.3"] }
+                ]
+            }
+        };
+
+        function updateStepOptions() {
+            const moduleSelect = document.getElementById('moduleSelect');
+            const stepSelectContainer = document.getElementById('stepSelectContainer');
+            const stepSelect = document.getElementById('stepSelect');
+            const contentContainer = document.getElementById('contentContainer');
+            const contentList = document.getElementById('contentList');
+
+            const selectedModule = moduleSelect.value;
+            stepSelect.innerHTML = '<option value="">Selecione...</option>'; 
+
+            if (selectedModule) {
+                const etapas = modules[selectedModule].etapas;
+                etapas.forEach((etapa, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.textContent = etapa.etapa;
+                    stepSelect.appendChild(option);
+                });
+
+                stepSelectContainer.style.display = 'block';
+                contentContainer.style.display = 'none'; 
+            } else {
+                stepSelectContainer.style.display = 'none';
+                contentContainer.style.display = 'none';
+            }
+        }
+//..aqui
+function updateContentOptions() {
+    const moduleSelect = document.getElementById('moduleSelect');
+    const stepSelect = document.getElementById('stepSelect');
+    const contentContainer = document.getElementById('contentContainer');
+    const contentList = document.getElementById('contentList');
+
+    const selectedModule = moduleSelect.value;
+    const selectedStepIndex = stepSelect.value;
+
+    // Mapeamento de URLs manuais para cada conteúdo
+    const manualLinks = {
+        "Conteúdo 1.1": "http://127.0.1.1/conteudo1-1",
+        "Conteúdo 1.2": "http://127.0.1.2/conteudo1-2",
+        "Conteúdo 1.3": "http://127.0.1.3/conteudo1-3",
+        "Conteúdo 2.1": "http://127.0.2.1/conteudo2-1",
+        // Adicione mais links conforme necessário
+    };
+
+    if (selectedModule && selectedStepIndex !== "") {
+        const selectedEtapa = modules[selectedModule].etapas[selectedStepIndex];
+
+        // Atualizar o subtítulo e o título da etapa
+        const contentTitle = document.getElementById('contentContainer').querySelector('h3');
+        contentTitle.innerHTML = `<h5>${selectedEtapa.etapa}</h5><br><strong>${selectedEtapa.subtitulo}</strong>`;
+
+        // Limpar conteúdos anteriores
+        contentList.innerHTML = '';
+
+        // Adicionar os conteúdos
+        selectedEtapa.conteudos.forEach((conteudo) => {
+            const contentItem = document.createElement('div');
+            contentItem.classList.add('content-item');
+            const link = document.createElement('a');
+            link.href = manualLinks[conteudo] || "#"; // URL definida ou fallback para "#"
+            link.target = '_blank';
+            link.textContent = conteudo;
+            contentItem.appendChild(link);
+            contentList.appendChild(contentItem);
+        });
+
+        contentContainer.style.display = 'block';
+    } else {
+        contentContainer.style.display = 'none';
+    }
+}
+//aqui..
+    </script>
+
+</body>
+</html>
+

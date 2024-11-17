@@ -1,0 +1,132 @@
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    padding: 30px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    color: #4CAF50;
+}
+
+strong {
+    margin-bottom: 16px;
+    /*font-size: 1.2em;*/
+    color: #9d240c;
+}
+
+ /* Formulário */
+#moduleForm {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Containers de etapas e conteúdos */
+#stepSelectContainer, #contentContainer {
+    display: none;
+}
+
+/* Estilo da lista de conteúdos */
+.content-list {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.content-item {
+    margin: 11px 0;
+    font-size: 1.1em;
+}
+
+.content-item a {
+    text-decoration: none;
+    /*cor texto normal*/
+    color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+.content-item a:hover {
+    /*cor texto passar mouse*/
+    color: #0056b3;
+}
+
+/* Efeito de hover nos botões (se tiver) */
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Efeito de animação nos containers */
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Estilos para o link de conteúdo */
+.content-item a {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+}
+
+.content-item a:hover {
+    /*efeito fundo ao passar mouse #e1f5fe;*/
+    background-color: #dbf1fe;
+}
